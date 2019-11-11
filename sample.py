@@ -38,5 +38,5 @@ if __name__ == '__main__':
 
     with open("sample.txt", "r") as data:
         histo = histogram_dictionary(data)
-        random_word(histo)
+        print(random_word(histo))
         probability(histo)
