@@ -23,40 +23,62 @@ class Listogram(list):
         # TODO: Increase word frequency by count
         self.tokens += count
 
-        if self.frequency(word) > 0: # if the frequency of the word is greater than 0
-            self[word] += count # then increase the count of the word by one
-            self.types = len(self)
+        # if self.__contains__(word): # if the frequency of the word is greater than 0
+        #     self[word] += count # then increase the count of the word by one
+        #     self.types = len(self)
+        # else:
+        #     self.append((word, count)) # else append the words and the count of 1 to the list
+        #     self.types += 1 # update the type of words by one because a new word is added
+        index = self.index_of(word)
+        if index is not None:
+            old_count = self[index][1]
+            new_count = old_count + count
+            self[index] = (word, new_count)
         else:
-            self.append((word, count)) # else append the words and the count of 1 to the list
-            self.types += 1 # update the type of words by one because a new word is added
-
+            self.append((word, count))
+            self.types += 1
+        
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
         # TODO: Retrieve word frequency count
-        return self.get(word, 0)
+        # return self.get(word, 0)
+        for word_list in self: 
+            if word_list[0] == word:
+                return word_list[1]
+            else:
+                return 0
         
 
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
         # TODO: Check if word is in this histogram
-        for word in self: # for word in the list self
-            if self[word] > 0: # if the words value is greater than 0, then it is in the histogram 
-                return True # return true
-            else: 
-                return False # else return false if the word is not in the histogram 
+
+        for word_list in self: # for word in the list self
+            if word_list[0] == word: # if the words value is greater than 0, then it is in the histogram 
+                return True # return true=
+        return False # else return false if the word is not in the histogram 
 
 
     def index_of(self, target):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
         # TODO: Implement linear search to find index of entry with target word
+        for word in self:
+            if word[0] == target:
+                return self.index(word)
+        return None
 
     def sample(self):
         """Return a word from this histogram, randomly sampled by weighting
         each word's probability of being chosen by its observed frequency."""
         # TODO: Randomly choose a word based on its frequency in this histogram
-
+        count = random.randint(1, self.tokens)
+        for word in self:
+            count -= word[1]
+            if count <= 0:
+                return word[0]
+        return -1
 
 def print_histogram(word_list):
     print()
