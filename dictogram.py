@@ -43,8 +43,7 @@ class Dictogram(dict):
         each word's probability of being chosen by its observed frequency."""
         # TODO: Randomly choose a word based on its frequency in this histogram
 
-        total_count = len(self.values()) # this is the total number of items in the histo. Should be 61.
-         # print(total_count) # yes, 61
+        total_count = len(self.values()) # this is the total number of items in the histo. 
         word_percents = {}
         for key in self: # for the key in the histogram
             word_percents[key] = str(round(self[key] / total_count * 100, 2)) + "%" # divide it by the total items in the histogram and divide by 100
