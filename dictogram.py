@@ -30,7 +30,7 @@ class Dictogram(dict):
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
         # TODO: Retrieve word frequency count
-        return self.get(word, "Word is not found") # return the 'value' of the word that is searched, if the input is not in the list then the message will show
+        return self.get(word, 0) # return the 'value' of the word that is searched, if the input is not in the list then 0 will show
 
 
     def sample(self):
