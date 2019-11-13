@@ -21,17 +21,22 @@ class Dictogram(dict):
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
-        self[word] = self.get(word, 0) + count # adding count is the same as adding 1 because count = 1.
-        self.types = len(self) # use len on self to find the words in the dictogram since that is where the words are stored
-        # must keep track of the distinct word types, when a new one is added to the histogram, types will increase accordingly
+  
         self.tokens += count # this keeps track of the total count of word tokens, must update it's count when word appears again
 
+        if self.frequency(word) > 0: # if the frequency of the word is greater than 0 
+            self[word] += count # increase the count of the word by one
+            self.types = len(self) # self.types = len(self) # use len on self to find the words in the dictogram since that is where the words are stored
+        else:   # if the frequency of the word is not greater than 0 then 
+            self[word] = count  # set the word count to 1
+            self.types += 1 # also increase the types by 1 because a new word is discovered
+            
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
         # TODO: Retrieve word frequency count
         return self.get(word, 0) # return the 'value' of the word that is searched, if the input is not in the list then 0 will show
-
+ 
 
     def sample(self):
         """Return a word from this histogram, randomly sampled by weighting
@@ -43,7 +48,7 @@ class Dictogram(dict):
         word_percents = {}
         for key in self: # for the key in the histogram
             word_percents[key] = str(round(self[key] / total_count * 100, 2)) + "%" # divide it by the total items in the histogram and divide by 100
-        # round(_, which decimal point) <--- this will round the number to the second decimal point
+            # round(_, which decimal point) <--- this will round the number to the second decimal point
 
         return word_percents
 
