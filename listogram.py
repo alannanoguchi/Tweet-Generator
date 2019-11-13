@@ -46,17 +46,16 @@ class Listogram(list):
         for word_list in self: 
             if word_list[0] == word:
                 return word_list[1]
-            else:
-                return 0
+        return 0
         
 
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
         # TODO: Check if word is in this histogram
 
-        for word_list in self: # for word in the list self
-            if word_list[0] == word: # if the words value is greater than 0, then it is in the histogram 
-                return True # return true=
+        for word_list in self: # for word_list in the list self
+            if word_list[0] == word: # if the word_list value is greater than 0, then it is in the histogram 
+                return True # return true
         return False # else return false if the word is not in the histogram 
 
 
