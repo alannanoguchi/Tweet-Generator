@@ -68,6 +68,16 @@ class LinkedList(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Append node after tail, if it exists
+        
+        new_node = Node(item)
+
+        if self.head is None: # if the head is none
+            self.head = new_node # set the head to new node (to hold given data)
+            self.tail = new_node # set the tail to new node so it can be appended
+        else: # if the head is not none
+            self.tail.next = new_node # set tail to new_node 
+            self.tail = new_node 
+
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
