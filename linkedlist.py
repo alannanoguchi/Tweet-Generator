@@ -56,6 +56,7 @@ class LinkedList(object):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes and count one for each
+        
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
@@ -75,6 +76,8 @@ class LinkedList(object):
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
+        if quality(node.data) is True:
+            return node.data
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
