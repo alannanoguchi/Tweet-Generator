@@ -68,7 +68,7 @@ class LinkedList(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Append node after tail, if it exists
-        
+
         new_node = Node(item)
 
         if self.head is None: # if the head is none
@@ -78,12 +78,25 @@ class LinkedList(object):
             self.tail.next = new_node # set tail to new_node 
             self.tail = new_node 
 
+        return new_node
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
+        
+        new_node = Node(item)
+
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+            self.head = new_node
+
+        return new_node
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
@@ -91,17 +104,58 @@ class LinkedList(object):
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
-        if quality(node.data) is True:
-            return node.data
+        
+        node = self.head
+        while node is not None:
+            if quality(node.data):
+                return node.data
+            else:
+                node = node.next
+        return None
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        TODO: Best case running time: O(???) Why and under what conditions? O(1) is the best case running time because we check if the first node is not none 
+        TODO: Worst case running time: O(???) Why and under what conditions? O(n)"""
         # TODO: Loop through all nodes to find one whose data matches given item
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
+
+        current_node = self.head  # the head is located at the current node          
+        previous = None
+
+        found = False # keep track of a found item 
+      
+        while current_node:
+            if self.head.data == item:  # if the currents nodes data is equal to an item,
+                if self.head.next is not None:  # if there is an item next after the head,
+                    self.head = self.head.next # the head is now the next item
+                    found = True 
+                    break
+                else:
+                    self.head = None
+                    self.tail = None
+                    found = True      
+                    break
+
+            elif current_node.data == item:
+                if current_node == self.tail:
+                    previous.next = None
+                    self.tail = previous
+                    found = True
+                    break
+                else:
+                    previous.next = current_node.next
+                    found = True
+                    break
+                    
+            else:
+                previous = current_node
+                current_node = current_node.next
+        if not found: # message will show if it is not found
+            raise ValueError('Item not found: {}'.format(item))
+
 
 
 def test_linked_list():
