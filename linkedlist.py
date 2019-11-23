@@ -36,7 +36,7 @@ class LinkedList(object):
     def items(self):
         """Return a list (dynamic array) of all items in this linked list.
         Best and worst case running time: O(n) for n items in the list (length)
-        because we always need to loop through all n nodes to get each item."""
+        because we always need to loop through all n nodes to get each item. """
         items = []  # O(1) time to create empty list
         # Start at head node
         node = self.head  # O(1) time to assign new variable
@@ -54,7 +54,7 @@ class LinkedList(object):
 
     def length(self):
         """Return the length of this linked list by traversing its nodes.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(???) Why and under what conditions? O(n) for best case and worst case."""
         # TODO: Loop through all nodes and count one for each
         count = 0
         node = self.head
@@ -65,7 +65,7 @@ class LinkedList(object):
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(???) Why and under what conditions? O(1) for best case and worst case because one item at a time is being appended"""
         # TODO: Create new node to hold given item
         # TODO: Append node after tail, if it exists
 
@@ -82,7 +82,7 @@ class LinkedList(object):
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        TODO: Running time: O(???) Why and under what conditions? O(1) for best and worst case because one item at a time is being prepended"""
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
         
@@ -100,8 +100,8 @@ class LinkedList(object):
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        TODO: Best case running time: O(???) Why and under what conditions? O(1)
+        TODO: Worst case running time: O(???) Why and under what conditions? O(n)"""
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
         
