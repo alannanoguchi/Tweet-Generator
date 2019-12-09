@@ -43,7 +43,7 @@ class HashTable(object):
         for bucket in self.buckets:
             for key, value in bucket.items(): 
                 all_values.append(value) #adding/collecting all of the values into the list all_value
-            return all_values
+        return all_values
 
 
     def items(self):
@@ -99,7 +99,7 @@ class HashTable(object):
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
-        TODO: Running time: O(???) Why and under what conditions? -O(n/b), it loops through each buckets entries. If item is found, it is replaced or appended if it is new"""
+        TODO: Running time: O(???) Why and under what conditions? -O(n), it loops through each buckets entries. If item is found, it is replaced or appended if it is new"""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, update value associated with given key
@@ -110,10 +110,8 @@ class HashTable(object):
         new_item = (key, value)
 
         if item is not None: # if the item is found, update the value associted with given key
-            bucket.replace(item, (key, value)) #replace() returns a copy of the string where all occurrences of a substring is replaced with another substring.
-            return
-        else:
-            bucket.append(new_item) # otherwise, insert given key-value entry into bucket
+            bucket.delete(item) # delete the current value then
+        bucket.append(new_item) # insert new key-value entry into bucket
 
 
     def delete(self, key):

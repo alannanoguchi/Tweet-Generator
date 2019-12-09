@@ -84,12 +84,12 @@ def list_of_lists(source_text): # elements in a list are mutable, enclosed in sq
     # print(new_hist_list)
     return new_hist_list
 
-def tuples(source_text): # elements in a tuple are immutable, faster to iterte over, enclosed in parenthesis
+def tuples(source_text): # elements in a tuple are immutable, faster to iterate over, enclosed in parenthesis
     
     histogram = list_of_lists(source_text)
     new_tuples_list = []
 
-    for x in histogram: # for a item x in the histogram
+    for x in histogram: # for an item x in the histogram
         new_tuples_list.append(tuple(x)) # add it to a new sublist of tuples
         
     # print(new_tuples_list)
