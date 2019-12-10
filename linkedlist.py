@@ -157,6 +157,20 @@ class LinkedList(object):
             raise ValueError('Item not found: {}'.format(item))
 
 
+    def replace(self, item, new_data):
+        """Running time : O(n)"""
+
+        found = False
+        current_node = self.head
+
+        while current_node is not None: # while the current node is not empty
+            if current_node.data == item: # if the current node is the old data
+                current_node.data = new_data # then the current node becomes the new data
+                return True
+            current_node = current_node.next # then the current node will be the next one
+        if not found: # else if there is no current data, then return message
+            raise ValueError('Item was not found: {}'.format(item))
+
 
 def test_linked_list():
     ll = LinkedList()
