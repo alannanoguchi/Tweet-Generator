@@ -35,6 +35,32 @@ def markovhistogram(words):
 
 # print(markovhistogram(words))
 
+def markov_second_order(words):
+    big_dict ={}
+
+    for i in range(len(words) -2):
+        first_word = words[i + 1]
+        second_word = words[i + 2]
+        # pairs = (first_word, second_word)
+        # print(pairs)
+
+        # big_dict[first_word] = marcov_dict
+        if first_word not in big_dict.keys():
+            histo = []
+            big_dict[(first_word, second_word)] = histo
+            
+        big_dict[(first_word, second_word)].append(second_word)
+         
+    values = big_dict.items()
+    for key, value in values:
+        # marcov_dict = {}  # can't use a regular dict
+        big_dict[key] = Dictogram(value)  # to use a dictogram method (add_count), we must first establish a Dictogram() object
+        # marcov_dict.add_count(second_word)
+        # print(marcov_dict)
+    return big_dict
+
+print(markov_second_order(words))  
+
 def random_walk(words, markov):
     """Use a random word from the big_dict to "walk" around the marcov chain to create a sentence"""
     sentence = [] # add all of the words to this list to create a sentence
