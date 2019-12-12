@@ -1,7 +1,8 @@
 #!python
 
 from __future__ import division, print_function  # Python 2 and 3 compatibility
-import random
+# import random
+from random import randrange, randint, choices, uniform
 
 
 class Dictogram(dict):
@@ -11,7 +12,7 @@ class Dictogram(dict):
         """Initialize this histogram as a new dict and count given words."""
         super(Dictogram, self).__init__()  # Initialize this as a new dict
         # Add properties to track useful word counts for this histogram
-        self.types = 0  # Count of distinct word types in this histogram
+        self.types =0   # Count of distinct word types in this histogram
         self.tokens = 0  # Total count of all word tokens in this histogram
         # Count words in given list, if any
         if word_list is not None:
@@ -21,15 +22,19 @@ class Dictogram(dict):
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
-  
-        if word in self: # fi the word is already in the dictionary 
+        # print(type(word))
+        if str(word) in self: # if the word is already in the dictionary 
             self[word] += count # increase the count of the word by 1
-            self.tokens += count # also increase the count of the tokens by 1
+            # self.tokens += count # also increase the count of the tokens by 1
         else: # if the word has not been seen in the dictionary yet
             self[word] = count # add the count of the word by 1
             self.types += 1 # increase the types because a new word is added
-            self.tokens += count # also increase the count of tokens for this word by one
-            
+        self.tokens += count # also increase the count of tokens for this word by one
+
+        # self[word] = self.get(word, 0) + count # if the count of the word is zero, add it to the dict       
+        # self.tokens += count 
+
+        self.types = len(self)           
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
@@ -47,13 +52,21 @@ class Dictogram(dict):
         each word's probability of being chosen by its observed frequency."""
         # TODO: Randomly choose a word based on its frequency in this histogram
 
-        total_count = len(self.values()) # this is the total number of items in the histo. 
-        word_percents = {}
-        for key in self: # for the key in the histogram
-            word_percents[key] = str(round(self[key] / total_count * 100, 2)) + "%" # divide it by the total items in the histogram and divide by 100
-            # round(_, which decimal point) <--- this will round the number to the second decimal point
+        # total_count = len(self.values()) # this is the total number of items in the histo. 
+        # word_percents = {}
+        # for key in self: # for the key in the histogram
+        #     word_percents[key] = str(round(self[key] / total_count * 100, 2)) + "%" # divide it by the total items in the histogram and divide by 100
+        #     # round(_, which decimal point) <--- this will round the number to the second decimal point
 
-        return word_percents
+        # return word_percents
+        total = 0
+        dart = uniform(0, self.tokens)
+        
+        for each in self.items():
+            total += each[1]
+            if dart <= total:
+                return each[0]
+
 
 
 def print_histogram(word_list):
