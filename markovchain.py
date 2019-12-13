@@ -115,7 +115,7 @@ def random_walk_second_order(markov):
     # print(next_word)
 
     i = 2
-    while i < 10:
+    while i < 15:
         # output = choice(random_key)
         
 
@@ -143,6 +143,6 @@ def random_walk_second_order(markov):
 
 
 # markov = markovhistogram(words)
-markov = markov_second_order(words)
-print(random_walk_second_order(markov))
+# markov = markov_second_order(words)
+# print(random_walk_second_order(markov))
 
