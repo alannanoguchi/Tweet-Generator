@@ -116,7 +116,7 @@ class HashTable(object):
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
-        TODO: Running time: O(???) Why and under what conditions? - O(1) would be the best case if there was only one node in the linkedlist. 0(n/b) for the worst case if there were multiple modes in the linkedlist because you search through every one to find the matching key to delete."""
+        TODO: Running time: O(???) Why and under what conditions? - O(1) would be the best case if there was only one node in the linkedlist to search through. 0(n/b) for the worst case if there were multiple modes in the linkedlist because you search through every one to find the matching key to delete."""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, delete entry associated with given key
