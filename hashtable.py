@@ -57,7 +57,7 @@ class HashTable(object):
 
     def length(self):
         """Return the number of key-value entries by traversing its buckets.
-        TODO: Running time: O(???) Why and under what conditions? - O(1), because it performs one action"""
+        TODO: Running time: O(???) Why and under what conditions? - O(n) because it loops through every bucket and through each node in the linkedlist to count the number of key-value entries."""
         # TODO: Loop through all buckets
         # TODO: Count number of key-value entries in each bucket
         count = 0
@@ -116,7 +116,7 @@ class HashTable(object):
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
-        TODO: Running time: O(???) Why and under what conditions? - O(1), this is the average case for iterating through a bucket to find an index and the linkedlist to find the key."""
+        TODO: Running time: O(???) Why and under what conditions? - O(1) would be the best case if there was only one node in the linkedlist. 0(n/b) for the worst case if there were multiple modes in the linkedlist because you search through every one to find the matching key to delete."""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, delete entry associated with given key
