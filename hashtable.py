@@ -129,7 +129,7 @@ class HashTable(object):
         if item is not None:
             bucket.delete(item)
         else:
-            raise KeyError('Keu not found: {}'.format(key))
+            raise KeyError('Key not found: {}'.format(key))
 
 
 def test_hash_table():
